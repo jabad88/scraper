@@ -1,13 +1,18 @@
 from bs4 import BeautifulSoup
 import requests
 
-url = 'https://finance.yahoo.com/quote/GOOG/'
+url = 'https://finance.yahoo.com/quote/SPY/'
 r = requests.get(url).text
 soup = BeautifulSoup(r,'html.parser')
 
+#Get specific information
 price = soup.find('fin-streamer', {'class': "Fw(b) Fz(36px) Mb(-4px) D(ib)"}).text
+change = soup.find('fin-streamer', {'class': "Fw(500) Pstart(8px) Fz(24px)"}).text
+change_percent = soup.find_all('fin-streamer', {"class":"Fw(500) Pstart(8px) Fz(24px)"})[1].text
+ticker = soup.find('h1',{'class':"D(ib) Fz(18px)"}).text
 
-print (price)
+print(ticker, price, change, change_percent)
 
-#Add functionality to get ticker, PE ration, etc.
-#Use a list to get data of other stocks
+
+#Add list to get info on other stocks, input from user
+#Create dictionary, csv, json from data.
