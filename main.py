@@ -15,4 +15,4 @@ print(ticker, price, change, change_percent)
 
 
 #Add list to get info on other stocks, input from user
-#Create dictionary, csv, json from data.
+#Create a dictionary, csv, json from data.
